@@ -1,0 +1,34 @@
+version: '2.1'
+
+services:
+
+  nginx:
+    build: .
+    container_name: nginx
+    hostname: nginx
+    restart: always
+    logging:
+      options:
+        max-size: "30m"
+        max-file: "2"
+    volumes:
+      - ./ssl:/etc/nginx/ssl
+      - ./service.conf:/etc/nginx/service.conf
+      - ./www:/www
+      - ../ggstats/nginx.conf:/etc/nginx/service-ggstats.conf
+      - ../gggalka/nginx.conf:/etc/nginx/service-gggalka.conf
+      - ../ggstats/web/static:/www/ggstats
+      - ../gggalka/www:/www/gggalka
+    networks:
+      - nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - TZ=UTC
+      - LETSENCRYPT=${LETSENCRYPT}
+      - LE_EMAIL=${LE_EMAIL}
+      - LE_FQDN=${LE_FQDN}
+
+networks:
+  nginx:
