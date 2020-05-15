@@ -12,6 +12,7 @@ venv/
 
 # logs
 *.log
+www/goaccess.html
 
 # settings
 .env

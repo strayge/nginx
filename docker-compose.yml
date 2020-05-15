@@ -12,6 +12,7 @@ services:
         max-size: "30m"
         max-file: "2"
     volumes:
+      - ./logs:/logs
       - ./ssl:/etc/nginx/ssl
       - ./configs/defaults.inc:/etc/nginx/defaults.inc
       - ./configs/ga.inc:/etc/nginx/ga.inc
