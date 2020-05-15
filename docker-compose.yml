@@ -18,10 +18,14 @@ services:
       - ./configs/ssl.inc:/etc/nginx/ssl.inc
       - ./configs/service.conf:/etc/nginx/service.conf
       - ./www:/www
+      # ggstats
       - ../ggstats/nginx.inc:/etc/nginx/ggstats.inc
       - ../ggstats/web/static:/www/ggstats
+      # gggalka
       - ../gggalka/nginx.inc:/etc/nginx/gggalka.inc
       - ../gggalka/www:/www/gggalka
+      # dtkd
+      - ../youtube2podcast/data/files:/www/dtkd
     networks:
       - nginx
     ports:
