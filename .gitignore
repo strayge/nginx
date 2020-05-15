@@ -12,6 +12,7 @@ venv/
 
 # logs
 *.log
+*.bak
 www/goaccess.html
 
 # settings
