@@ -13,11 +13,14 @@ services:
         max-file: "2"
     volumes:
       - ./ssl:/etc/nginx/ssl
-      - ./service.conf:/etc/nginx/service.conf
+      - ./configs/defaults.inc:/etc/nginx/defaults.inc
+      - ./configs/ga.inc:/etc/nginx/ga.inc
+      - ./configs/ssl.inc:/etc/nginx/ssl.inc
+      - ./configs/service.conf:/etc/nginx/service.conf
       - ./www:/www
-      - ../ggstats/nginx.conf:/etc/nginx/service-ggstats.conf
-      - ../gggalka/nginx.conf:/etc/nginx/service-gggalka.conf
+      - ../ggstats/nginx.inc:/etc/nginx/ggstats.inc
       - ../ggstats/web/static:/www/ggstats
+      - ../gggalka/nginx.inc:/etc/nginx/gggalka.inc
       - ../gggalka/www:/www/gggalka
     networks:
       - nginx
